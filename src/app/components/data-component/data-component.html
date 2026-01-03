@@ -1,0 +1,25 @@
+<p>data-component works!</p>
+
+<div *ngIf="data">
+
+<p>Received Data: {{ data | json }}</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.username }}</td>
+            <td>{{ data.message }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>

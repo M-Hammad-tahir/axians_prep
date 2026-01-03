@@ -1,0 +1,31 @@
+<p>Angular Forms Component</p>
+
+Value: {{ myForm.value | json }}
+
+<form [formGroup]="myForm" class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name"/>
+        <mat-error *ngIf="myForm.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" matInput/>
+        <mat-error *ngIf="myForm.get('username')?.hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="myForm.get('username')?.hasError('minlength')">Username must be atleast 5 characters long</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea type="text" formControlName="message" placeholder="Write message here" matInput></textarea>
+    </mat-form-field>
+
+    <div class="form-buttons-div">
+    <button class="submit-button" type="submit" mat-button>Submit</button>
+    <button class="cancel-button" type="cancel" mat-button (click)="onCancel()">Cancel</button>
+    </div>
+
+    <app-data-component [data]="submittedDataForChild"></app-data-component>
+
+</form>
