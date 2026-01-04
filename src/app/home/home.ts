@@ -5,7 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DataComponent } from '../components/data-component/data-component';
-import { FormData } from '../models/formData';
+import { FormData } from '../models/form-data.model';
+import { FormServiceTs } from '../services/form.service';
 
 
 @Component({
@@ -17,32 +18,35 @@ import { FormData } from '../models/formData';
 export class Home implements OnInit {
 
   myForm: FormGroup = new FormGroup({});
-  submittedDataForChild: any;
+  isSubmitting = false;
 
-  constructor(private fb: FormBuilder) {}
-  ngOnInit() { 
+  constructor(private fb: FormBuilder, private formService: FormServiceTs) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', [Validators.required, Validators.minLength(5)]],
-      message: ''
+      message: ['', Validators.required],
     });
-
-    this.myForm.valueChanges.subscribe(console.log);
+  }
+  ngOnInit() { 
+    this.myForm.valueChanges.subscribe(value => {
+      console.log('Form values changes:', value);
+    });
   }
 
-  onSubmit(){
-    if (this.myForm.invalid){
+  onSubmit():void {
+    if(this.myForm.invalid){
       this.myForm.markAllAsTouched();
       return;
-    } else {
-      this.submittedDataForChild = this.myForm.value;
-      console.log('data for child component:', this.submittedDataForChild);
     }
+    this.isSubmitting = true;
+    const formData: FormData = this.myForm.value;
+    this.formService.submitForm(formData);
+    this.isSubmitting = false;
   }
 
-  onCancel(){
-    this.myForm.get('name')?.setValue('');
-    this.myForm.get('username')?.setValue('');
-    this.myForm.get('message')?.setValue('');
+  onCancel(): void {
+    this.myForm.reset();
+    this.formService.clearData();
   }
+
 }

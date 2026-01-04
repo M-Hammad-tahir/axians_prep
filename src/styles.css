@@ -3,6 +3,52 @@
 html, body { height: 100%; }
 body { margin: 20px; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+/*
+Navbar
+*/
+.logo {
+  width: 100px; /* Adjust as needed */
+  height: auto;
+  display: block;
+}
+
+.header-bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    margin-bottom: 4px;
+}
+
+.navbar-items ul {
+    list-style-type: none;
+    gap: 20px;
+    display: flex;
+    margin-right: 8px;
+}
+
+
+/*
+home component styles
+*/
+
+.data-div {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border: solid 6px black;
+    background-color: #6fda8f;
+}
+
+/*
+form and table styles
+*/
+
 .form {
     display:flex;
     flex-direction: column;

@@ -1,6 +1,23 @@
-<p>Angular Forms Component</p>
+<div class="header-bar">
+    <div class="logo-div">
+        <img class="logo" src="../../assets/download1.jfif" alt="Axians Logo"/>
+    </div>
+    <div class="navbar-items">
+        <ul>
+            <li>Home</li>
+            <li>Projects</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="data-div">
 
 Value: {{ myForm.value | json }}
+
+</div>
 
 <form [formGroup]="myForm" class="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
@@ -26,6 +43,6 @@ Value: {{ myForm.value | json }}
     <button class="cancel-button" type="cancel" mat-button (click)="onCancel()">Cancel</button>
     </div>
 
-    <app-data-component [data]="submittedDataForChild"></app-data-component>
+    <app-data-component></app-data-component>
 
 </form>

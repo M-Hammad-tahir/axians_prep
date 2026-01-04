@@ -1,25 +1,22 @@
-<p>data-component works!</p>
-
-<div *ngIf="data">
-
-<p>Received Data: {{ data | json }}</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Message</th>
-        </tr>
+<div *ngIf="data; else noData" class="data-container">
+  <h3>Submitted Data</h3>
+  <table>
+   <thead>
+    <tr>
+        <td>Name</td>
+        <td>Username</td>
+        <td>Message</td>
+    </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{ data.name }}</td>
-            <td>{{ data.username }}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.username}}</td>
             <td>{{ data.message }}</td>
         </tr>
     </tbody>
-</table>
-
-
+  </table>
 </div>
+<ng-template #noData>
+  <p>No data submitted yet.</p>
+</ng-template>
