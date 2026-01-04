@@ -39,8 +39,8 @@ Value: {{ myForm.value | json }}
     </mat-form-field>
 
     <div class="form-buttons-div">
-    <button class="submit-button" type="submit" mat-button>Submit</button>
-    <button class="cancel-button" type="cancel" mat-button (click)="onCancel()">Cancel</button>
+    <app-button type="submit" text="submit" color="green" (btnClick)="onSubmit()"></app-button>
+    <app-button type="cancel" text="cancel" color="red" (btnClick)="onCancel()"></app-button>
     </div>
 
     <app-data-component></app-data-component>

@@ -7,11 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { DataComponent } from '../components/data-component/data-component';
 import { FormData } from '../models/form-data.model';
 import { FormServiceTs } from '../services/form.service';
+import { Button } from '../components/button/button';
 
 
 @Component({
   selector: 'app-home',
-  imports: [DataComponent, ReactiveFormsModule, JsonPipe, MatInputModule, MatFormFieldModule, MatButtonModule, NgIf],
+  imports: [DataComponent, ReactiveFormsModule, JsonPipe, MatInputModule, MatFormFieldModule, MatButtonModule, NgIf, Button],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
