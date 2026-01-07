@@ -1,0 +1,55 @@
+<div class="container-div">
+    <div class="data-div">
+        Value: {{ myForm.value | json }}
+    </div>
+
+    <div class="second-div">
+        <table *ngIf="results">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results">
+                    <td>{{ result.id }}</td>
+                    <td>{{ result.userId }}</td>
+                    <td>{{ result.title }}</td>
+                    <td>{{ result.body }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<form [formGroup]="myForm" class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name"/>
+        <mat-error *ngIf="myForm.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" matInput/>
+        <mat-error *ngIf="myForm.get('username')?.hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="myForm.get('username')?.hasError('minlength')">Username must be atleast 5 characters long</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Message</mat-label>
+        <textarea type="text" formControlName="message" placeholder="Write message here" matInput></textarea>
+    </mat-form-field>
+
+    <div class="form-buttons-div">
+    <app-button type="submit" text="submit" color="green" (btnClick)="onSubmit()"></app-button>
+    <app-button type="cancel" text="cancel" color="red" (btnClick)="onCancel()"></app-button>
+    </div>
+
+    <app-data-component></app-data-component>
+
+</form>

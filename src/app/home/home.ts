@@ -8,46 +8,28 @@ import { DataComponent } from '../components/data-component/data-component';
 import { FormData } from '../models/form-data.model';
 import { FormServiceTs } from '../services/form.service';
 import { Button } from '../components/button/button';
+import { HeaderNavbar } from '../components/header-navbar/header-navbar';
+import { MainContent } from '../components/main-content/main-content';
 
 
 @Component({
   selector: 'app-home',
-  imports: [DataComponent, ReactiveFormsModule, JsonPipe, MatInputModule, MatFormFieldModule, MatButtonModule, NgIf, Button],
+  imports: [ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, HeaderNavbar, MainContent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
 
-  myForm: FormGroup = new FormGroup({});
-  isSubmitting = false;
 
-  constructor(private fb: FormBuilder, private formService: FormServiceTs) {
-    this.myForm = this.fb.group({
-      name: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength(5)]],
-      message: ['', Validators.required],
-    });
-  }
-  ngOnInit() { 
-    this.myForm.valueChanges.subscribe(value => {
-      console.log('Form values changes:', value);
-    });
+  ngOnInit(): void {
+    this.timeoutMethod();
   }
 
-  onSubmit():void {
-    if(this.myForm.invalid){
-      this.myForm.markAllAsTouched();
-      return;
-    }
-    this.isSubmitting = true;
-    const formData: FormData = this.myForm.value;
-    this.formService.submitForm(formData);
-    this.isSubmitting = false;
+  timeoutMethod(): void {
+    console.log('before');
+    setTimeout(()=> {
+      console.log('changed');
+    }, 1000);
+    console.log('after');
   }
-
-  onCancel(): void {
-    this.myForm.reset();
-    this.formService.clearData();
-  }
-
 }

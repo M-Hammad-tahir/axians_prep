@@ -29,6 +29,33 @@ Navbar
     margin-right: 8px;
 }
 
+/*
+Container Div main content
+*/
+
+.container-div {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;;
+    gap:20px;
+
+}
+
+.second-div {
+    height: 500px;
+    width: 500px;
+    padding: 20px;;
+    background-color: #6fda8f;
+    border: solid 6px black;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+    span {
+        background-color: tomato;
+    }
+}
 
 /*
 home component styles
